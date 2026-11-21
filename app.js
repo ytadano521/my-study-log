@@ -3,27 +3,27 @@ const STORAGE_KEY = "tiny-diary.entries.v1";
 const moods = {
   happy: {
     label: "集中できた",
-    face: "😊",
+    face: "極",
     score: 5,
   },
   calm: {
     label: "まずまず",
-    face: "😌",
+    face: "良",
     score: 4,
   },
   normal: {
     label: "普通",
-    face: "🙂",
+    face: "中",
     score: 3,
   },
   tired: {
     label: "やや低下",
-    face: "😵‍💫",
+    face: "整",
     score: 2,
   },
   sad: {
     label: "集中できず",
-    face: "🥲",
+    face: "休",
     score: 1,
   },
 };
@@ -271,14 +271,14 @@ function createBiorhythmSvg(recentEntries) {
     >
       <defs>
         <linearGradient id="rhythm-line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#6aa9ff" />
-          <stop offset="45%" stop-color="#79c7b3" />
-          <stop offset="75%" stop-color="#ffd166" />
-          <stop offset="100%" stop-color="#f47fa2" />
+          <stop offset="0%" stop-color="#284b73" />
+          <stop offset="45%" stop-color="#6f7f69" />
+          <stop offset="75%" stop-color="#b68a42" />
+          <stop offset="100%" stop-color="#a94a3c" />
         </linearGradient>
         <linearGradient id="rhythm-area-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#f47fa2" stop-opacity="0.24" />
-          <stop offset="100%" stop-color="#6aa9ff" stop-opacity="0.03" />
+          <stop offset="0%" stop-color="#284b73" stop-opacity="0.22" />
+          <stop offset="100%" stop-color="#b68a42" stop-opacity="0.03" />
         </linearGradient>
       </defs>
       <g class="rhythm-grid" aria-hidden="true">

@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="japanese-landscape" aria-hidden="true">
+      <img src="assets/japanese-study-landscape.svg" alt="" />
+    </div>
     <main class="app-shell">
       <section class="editor-panel" aria-labelledby="app-title">
         <div class="brand-row">
           <div>
-            <p class="eyebrow">daily study log</p>
+            <p class="eyebrow">学びの記録</p>
             <h1 id="app-title">学習ログ</h1>
           </div>
           <div class="save-state" id="save-state" aria-live="polite">未保存</div>
@@ -26,27 +29,27 @@
             <div class="mood-grid" id="mood-grid">
               <label class="mood-option">
                 <input type="radio" name="mood" value="happy" required />
-                <span class="mood-face">😊</span>
+                <span class="mood-face">極</span>
                 <span>集中できた</span>
               </label>
               <label class="mood-option">
                 <input type="radio" name="mood" value="calm" />
-                <span class="mood-face">😌</span>
+                <span class="mood-face">良</span>
                 <span>まずまず</span>
               </label>
               <label class="mood-option">
                 <input type="radio" name="mood" value="normal" />
-                <span class="mood-face">🙂</span>
+                <span class="mood-face">中</span>
                 <span>普通</span>
               </label>
               <label class="mood-option">
                 <input type="radio" name="mood" value="tired" />
-                <span class="mood-face">😵‍💫</span>
+                <span class="mood-face">整</span>
                 <span>やや低下</span>
               </label>
               <label class="mood-option">
                 <input type="radio" name="mood" value="sad" />
-                <span class="mood-face">🥲</span>
+                <span class="mood-face">休</span>
                 <span>集中できず</span>
               </label>
             </div>
@@ -76,7 +79,7 @@
       <section class="history-panel" aria-labelledby="history-title">
         <div class="history-header">
           <div>
-            <p class="eyebrow">my study records</p>
+            <p class="eyebrow">振り返りの記録</p>
             <h2 id="history-title">過去の学習ログ</h2>
           </div>
           <div class="stats-strip" aria-label="記録数">

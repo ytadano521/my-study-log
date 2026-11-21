@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="520" viewBox="0 0 720 520">
+  <defs>
+    <linearGradient id="mist" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fcfaf4" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#284b73" stop-opacity=".12"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="520" rx="260" fill="url(#mist)"/>
+  <g fill="none" stroke="#284b73" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M48 454 C185 338 248 275 363 163 C402 132 436 184 472 221 C536 287 581 338 672 421" stroke-width="13" stroke-opacity=".64"/>
+    <path d="M363 163 L326 205 L302 230" stroke-width="11" stroke-opacity=".68"/>
+    <path d="M363 163 C407 202 447 248 483 294" stroke-width="8" stroke-opacity=".54"/>
+  </g>
+  <path d="M363 163 C405 198 449 241 488 290 C456 272 429 263 400 267 C376 270 350 284 326 300 Z" fill="#fcfaf4" fill-opacity=".94"/>
+  <path d="M319 218 C345 192 362 176 374 161 C390 187 409 207 431 231 C402 216 380 220 356 235 Z" fill="#fcfaf4" fill-opacity=".82"/>
+  <g fill="none" stroke="#17233c" stroke-linecap="round" stroke-opacity=".58">
+    <path d="M82 420 C132 390 174 380 218 398" stroke-width="8"/>
+    <path d="M116 408 C104 358 94 326 70 298" stroke-width="10"/>
+    <path d="M96 350 C72 342 52 325 42 306" stroke-width="7"/>
+    <path d="M104 372 C142 342 156 312 156 277" stroke-width="8"/>
+    <path d="M138 386 C171 368 198 344 215 318" stroke-width="7"/>
+  </g>
+  <g fill="#17233c" fill-opacity=".82">
+    <ellipse cx="64" cy="296" rx="30" ry="12" transform="rotate(-18 64 296)"/>
+    <ellipse cx="43" cy="306" rx="24" ry="10" transform="rotate(-31 43 306)"/>
+    <ellipse cx="155" cy="274" rx="29" ry="12" transform="rotate(-42 155 274)"/>
+    <ellipse cx="215" cy="318" rx="32" ry="13" transform="rotate(-23 215 318)"/>
+  </g>
+  <g fill="none" stroke="#b68a42" stroke-width="5" stroke-linecap="round" stroke-opacity=".58">
+    <path d="M514 114 C548 91 592 91 626 112"/>
+    <path d="M536 134 C572 112 612 114 643 132"/>
+  </g>
+  <g fill="#a94a3c" fill-opacity=".42">
+    <circle cx="585" cy="94" r="18"/>
+  </g>
+</svg>

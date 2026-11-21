@@ -1,18 +1,23 @@
 :root {
-  --paper: #fffdf7;
-  --ink: #2d2a26;
-  --muted: #76716b;
-  --line: #e5ddd0;
-  --panel: #ffffff;
-  --pink: #f47fa2;
-  --pink-dark: #cd4772;
-  --mint: #79c7b3;
-  --yellow: #ffd166;
-  --sky: #6aa9ff;
-  --lavender: #b28dff;
-  --shadow: 0 18px 50px rgba(63, 44, 29, 0.14);
+  --ink: #17233c;
+  --ink-deep: #0c1527;
+  --indigo: #284b73;
+  --indigo-light: #5f7e9e;
+  --paper: #f4f0e6;
+  --paper-light: #fcfaf4;
+  --wood-light: #b58a55;
+  --wood-mid: #8a6040;
+  --wood-dark: #5f402b;
+  --wood-line: #49301f;
+  --gold: #b68a42;
+  --vermilion: #a94a3c;
+  --sage: #6f7f69;
+  --line: #d8d0bf;
+  --muted: #687083;
+  --shadow: 0 18px 44px rgba(12, 21, 39, 0.12);
   font-family:
-    "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+    "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif CJK JP",
+    "Yu Gothic", system-ui, sans-serif;
 }
 
 * {
@@ -23,10 +28,35 @@ body {
   min-height: 100vh;
   margin: 0;
   color: var(--ink);
-  background:
-    linear-gradient(135deg, rgba(244, 127, 162, 0.16), transparent 34%),
-    linear-gradient(315deg, rgba(121, 199, 179, 0.18), transparent 38%),
-    var(--paper);
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgba(95, 64, 43, 0.055) 0 1px, transparent 1.8px),
+    radial-gradient(ellipse at 80% 70%, rgba(95, 64, 43, 0.045) 0 1px, transparent 1.8px),
+    repeating-linear-gradient(28deg, transparent 0 14px, rgba(182, 138, 66, 0.018) 15px 16px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.48), transparent 45%);
+  background-size: 12px 10px, 16px 14px, 100% 100%, 100% 100%;
+}
+
+.japanese-landscape {
+  position: fixed;
+  right: -42px;
+  bottom: -18px;
+  z-index: 0;
+  width: min(38vw, 430px);
+  opacity: 0.24;
+  pointer-events: none;
+  filter: saturate(0.72) contrast(1.08);
+}
+
+.japanese-landscape img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.app-shell {
+  position: relative;
+  z-index: 1;
 }
 
 button,
@@ -42,8 +72,8 @@ button {
 
 .app-shell {
   display: grid;
-  grid-template-columns: minmax(320px, 0.95fr) minmax(360px, 1.05fr);
-  gap: 24px;
+  grid-template-columns: minmax(320px, 0.92fr) minmax(380px, 1.08fr);
+  gap: 22px;
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
   padding: 28px 0;
@@ -51,22 +81,59 @@ button {
 
 .editor-panel,
 .history-panel {
+  position: relative;
   min-width: 0;
-  border: 1px solid rgba(229, 221, 208, 0.9);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.88);
-  box-shadow: var(--shadow);
+  border: 14px solid transparent;
+  border-image-source: url("assets/real-wood-frame.svg");
+  border-image-slice: 64;
+  border-image-width: 14px;
+  border-image-repeat: stretch;
+  border-radius: 2px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 21px,
+      rgba(95, 64, 43, 0.018) 22px 23px,
+      transparent 24px 43px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 23px,
+      rgba(95, 64, 43, 0.022) 24px 25px,
+      transparent 26px 47px
+    ),
+    rgba(252, 250, 244, 0.96);
+  background-clip: padding-box;
+  box-shadow:
+    0 18px 44px rgba(12, 21, 39, 0.12),
+    inset 0 0 0 1px rgba(73, 48, 31, 0.58),
+    inset 0 0 18px rgba(95, 64, 43, 0.08);
+}
+
+.editor-panel::before,
+.history-panel::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  left: -5px;
+  border: 2px solid rgba(73, 48, 31, 0.34);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 238, 194, 0.38),
+    0 0 0 1px rgba(255, 238, 194, 0.16);
+  pointer-events: none;
 }
 
 .editor-panel {
   position: sticky;
   top: 24px;
   align-self: start;
-  padding: 26px;
+  padding: 28px;
 }
 
 .history-panel {
-  padding: 24px;
+  padding: 26px;
 }
 
 .brand-row,
@@ -83,30 +150,33 @@ button {
 .history-header {
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .eyebrow {
-  margin: 0 0 6px;
-  color: var(--pink-dark);
-  font-size: 0.72rem;
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", system-ui, sans-serif;
+  font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 0;
-  text-transform: uppercase;
+  letter-spacing: 0.22em;
 }
 
 h1,
 h2 {
   margin: 0;
+  color: var(--ink-deep);
+  font-weight: 700;
   line-height: 1.1;
+  letter-spacing: 0.08em;
 }
 
 h1 {
-  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-size: clamp(2.3rem, 5vw, 4.1rem);
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 1.55rem;
 }
 
 .save-state,
@@ -114,14 +184,19 @@ h2 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 78px;
+  min-width: 82px;
   min-height: 42px;
   border: 1px solid var(--line);
-  border-radius: 999px;
-  background: #fff8e7;
+  background: rgba(244, 240, 230, 0.74);
   color: var(--muted);
-  font-size: 0.86rem;
-  font-weight: 700;
+  font-family: "Yu Gothic", system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.save-state {
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 4px var(--paper-light);
 }
 
 .stats-strip {
@@ -130,7 +205,8 @@ h2 {
 }
 
 .stats-strip strong {
-  font-size: 1.25rem;
+  color: var(--vermilion);
+  font-size: 1.3rem;
 }
 
 .diary-form {
@@ -141,8 +217,10 @@ h2 {
 .field-label,
 .mood-field legend {
   color: var(--ink);
-  font-size: 0.9rem;
-  font-weight: 800;
+  font-family: "Yu Gothic", system-ui, sans-serif;
+  font-size: 0.86rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
 }
 
 input[type="date"],
@@ -151,8 +229,8 @@ select,
 textarea {
   width: 100%;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #fffefb;
+  border-radius: 2px;
+  background: rgba(255, 254, 249, 0.92);
   color: var(--ink);
   outline: none;
   transition:
@@ -172,14 +250,14 @@ textarea {
   min-height: 138px;
   resize: vertical;
   padding: 12px;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: var(--pink);
-  box-shadow: 0 0 0 4px rgba(244, 127, 162, 0.16);
+  border-color: var(--indigo);
+  box-shadow: 0 0 0 3px rgba(40, 75, 115, 0.12);
   background: #fff;
 }
 
@@ -193,22 +271,25 @@ textarea:focus {
 .mood-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 8px;
+  gap: 7px;
   margin-top: 10px;
 }
 
 .mood-option {
   position: relative;
   display: grid;
-  min-height: 86px;
+  min-height: 82px;
   place-items: center;
-  gap: 5px;
+  gap: 4px;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #fffefb;
+  border-radius: 2px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.82), transparent),
+    var(--paper-light);
   color: var(--muted);
-  font-size: 0.78rem;
-  font-weight: 800;
+  font-family: "Yu Gothic", system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 900;
   text-align: center;
   transition:
     transform 160ms ease,
@@ -219,8 +300,8 @@ textarea:focus {
 }
 
 .mood-option:hover {
-  transform: translateY(-1px);
-  border-color: rgba(244, 127, 162, 0.6);
+  transform: translateY(-2px);
+  border-color: var(--indigo-light);
 }
 
 .mood-option input {
@@ -231,22 +312,29 @@ textarea:focus {
 }
 
 .mood-option:has(input:checked) {
-  border-color: var(--pink);
-  background: #fff1f6;
-  color: var(--pink-dark);
-  box-shadow: 0 10px 22px rgba(244, 127, 162, 0.18);
+  border-color: var(--indigo);
+  background: var(--ink);
+  color: #fff;
+  box-shadow: 0 9px 18px rgba(23, 35, 60, 0.18);
 }
 
 .mood-face {
-  font-size: 1.75rem;
+  color: var(--gold);
+  font-size: 1.5rem;
   line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.mood-option:has(input:checked) .mood-face {
+  color: #dcb969;
 }
 
 .note-meta {
   justify-content: space-between;
   gap: 12px;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-family: "Yu Gothic", system-ui, sans-serif;
+  font-size: 0.78rem;
 }
 
 .action-row {
@@ -260,10 +348,12 @@ textarea:focus {
 .ghost-button,
 .entry-actions button {
   min-height: 44px;
-  border-radius: 8px;
+  border-radius: 2px;
   border: 1px solid transparent;
   padding: 0 18px;
-  font-weight: 800;
+  font-family: "Yu Gothic", system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.04em;
   transition:
     transform 160ms ease,
     box-shadow 160ms ease,
@@ -272,26 +362,29 @@ textarea:focus {
 }
 
 .primary-button {
-  background: var(--pink);
-  color: white;
-  box-shadow: 0 12px 24px rgba(205, 71, 114, 0.22);
+  border-color: var(--ink-deep);
+  background: var(--ink);
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(23, 35, 60, 0.18);
 }
 
 .primary-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 28px rgba(205, 71, 114, 0.28);
+  background: var(--indigo);
+  box-shadow: 0 12px 24px rgba(23, 35, 60, 0.22);
 }
 
 .ghost-button,
 .entry-actions button {
   border-color: var(--line);
-  background: #fffefb;
+  background: var(--paper-light);
   color: var(--ink);
 }
 
 .ghost-button:hover,
 .entry-actions button:hover {
-  border-color: var(--pink);
+  border-color: var(--indigo);
+  color: var(--indigo);
 }
 
 .summary-row {
@@ -304,33 +397,44 @@ textarea:focus {
   display: grid;
   gap: 10px;
   margin-bottom: 18px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: linear-gradient(135deg, #fff8e7, #fffefb);
+  border: 7px solid transparent;
+  border-image-source: url("assets/real-wood-frame.svg");
+  border-image-slice: 64;
+  border-image-width: 7px;
+  border-image-repeat: stretch;
+  border-radius: 1px;
+  background:
+    linear-gradient(135deg, rgba(182, 138, 66, 0.08), transparent 42%),
+    var(--paper-light);
+  box-shadow: inset 0 0 0 1px rgba(73, 48, 31, 0.42);
   padding: 16px;
 }
 
 .biorhythm-label {
   margin: 0 0 4px;
-  color: var(--muted);
-  font-size: 0.82rem;
+  color: var(--gold);
+  font-family: "Yu Gothic", system-ui, sans-serif;
+  font-size: 0.78rem;
   font-weight: 900;
+  letter-spacing: 0.12em;
 }
 
 .biorhythm strong {
   display: block;
-  font-size: 1.12rem;
+  font-size: 1.08rem;
   line-height: 1.35;
 }
 
 .rhythm-chart {
   min-height: 180px;
   overflow: hidden;
-  border: 1px solid rgba(229, 221, 208, 0.86);
-  border-radius: 8px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 248, 231, 0.42)),
-    #fffefb;
+    linear-gradient(rgba(40, 75, 115, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(40, 75, 115, 0.025) 1px, transparent 1px),
+    rgba(255, 254, 249, 0.84);
+  background-size: 16px 16px;
 }
 
 .rhythm-svg {
@@ -340,8 +444,8 @@ textarea:focus {
 }
 
 .rhythm-grid line {
-  stroke: rgba(118, 113, 107, 0.22);
-  stroke-dasharray: 4 5;
+  stroke: rgba(23, 35, 60, 0.16);
+  stroke-dasharray: 3 6;
   stroke-width: 1;
 }
 
@@ -354,22 +458,25 @@ textarea:focus {
   stroke: url("#rhythm-line-gradient");
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 5;
-  filter: drop-shadow(0 7px 10px rgba(205, 71, 114, 0.18));
+  stroke-width: 4;
+  filter: drop-shadow(0 5px 7px rgba(23, 35, 60, 0.12));
 }
 
 .rhythm-point circle {
-  fill: #fffefb;
-  stroke: var(--pink);
+  fill: var(--paper-light);
+  stroke: var(--indigo);
   stroke-width: 3;
 }
 
 .rhythm-point text {
+  font-family: "Yu Mincho", serif;
   font-size: 14px;
+  font-weight: 800;
 }
 
 .rhythm-axis-label {
   fill: var(--muted);
+  font-family: "Yu Gothic", system-ui, sans-serif;
   font-size: 10px;
   font-weight: 800;
 }
@@ -377,7 +484,8 @@ textarea:focus {
 .biorhythm-detail {
   margin: 0;
   color: var(--muted);
-  font-size: 0.84rem;
+  font-family: "Yu Gothic", system-ui, sans-serif;
+  font-size: 0.78rem;
   line-height: 1.6;
 }
 
@@ -386,12 +494,13 @@ textarea:focus {
   align-items: center;
   gap: 6px;
   min-height: 34px;
-  border-radius: 999px;
   border: 1px solid var(--line);
-  background: #fffefb;
+  border-radius: 0;
+  background: var(--paper-light);
   padding: 0 11px;
   color: var(--muted);
-  font-size: 0.84rem;
+  font-family: "Yu Gothic", system-ui, sans-serif;
+  font-size: 0.78rem;
   font-weight: 800;
 }
 
@@ -418,15 +527,17 @@ textarea:focus {
 .empty-state {
   display: grid;
   gap: 6px;
-  border: 1px dashed #dccfbd;
-  border-radius: 8px;
-  background: rgba(255, 248, 231, 0.62);
+  border: 1px dashed #bbae91;
+  border-radius: 2px;
+  background: rgba(182, 138, 66, 0.055);
   padding: 20px;
   color: var(--muted);
+  font-family: "Yu Gothic", system-ui, sans-serif;
 }
 
 .empty-state strong {
   color: var(--ink);
+  font-size: 0.9rem;
 }
 
 .entry-list {
@@ -441,8 +552,16 @@ textarea:focus {
   display: grid;
   gap: 12px;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #fffefb;
+  border-left: 5px solid var(--wood-mid);
+  border-radius: 1px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 27px,
+      rgba(95, 64, 43, 0.018) 28px 29px
+    ),
+    var(--paper-light);
+  box-shadow: inset 1px 0 0 var(--wood-light);
   padding: 16px;
 }
 
@@ -456,6 +575,7 @@ textarea:focus {
 .entry-date {
   font-size: 1rem;
   font-weight: 900;
+  letter-spacing: 0.04em;
 }
 
 .mood-badge {
@@ -463,18 +583,20 @@ textarea:focus {
   align-items: center;
   gap: 6px;
   min-height: 32px;
-  border-radius: 999px;
+  border: 1px solid var(--line);
+  border-radius: 0;
   padding: 0 10px;
-  background: #fff1f6;
-  color: var(--pink-dark);
-  font-size: 0.82rem;
+  background: rgba(40, 75, 115, 0.06);
+  color: var(--indigo);
+  font-family: "Yu Gothic", system-ui, sans-serif;
+  font-size: 0.76rem;
   font-weight: 900;
 }
 
 .entry-note {
   margin: 0;
-  color: #413c36;
-  line-height: 1.7;
+  color: #354055;
+  line-height: 1.75;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
 }
@@ -488,11 +610,11 @@ textarea:focus {
 .entry-actions button {
   min-height: 38px;
   padding: 0 13px;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
 }
 
 .entry-actions .danger-button {
-  color: #b72b42;
+  color: var(--vermilion);
 }
 
 [hidden] {
@@ -525,10 +647,26 @@ textarea:focus {
     padding: 8px;
   }
 
+  .japanese-landscape {
+    right: -80px;
+    bottom: 34%;
+    width: 280px;
+    opacity: 0.16;
+  }
+
   .editor-panel,
   .history-panel {
     overflow-y: auto;
-    padding: 12px;
+    border-width: 8px;
+    padding: 10px;
+  }
+
+  .editor-panel::before,
+  .history-panel::before {
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
   }
 
   .brand-row,
@@ -543,11 +681,21 @@ textarea:focus {
   }
 
   h1 {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
   }
 
   h2 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+  }
+
+  .eyebrow {
+    margin-bottom: 5px;
+  }
+
+  .save-state,
+  .stats-strip {
+    min-width: 64px;
+    min-height: 36px;
   }
 
   .diary-form {
@@ -564,11 +712,11 @@ textarea:focus {
 
   .mood-option {
     min-height: 62px;
-    font-size: 0.64rem;
+    font-size: 0.58rem;
   }
 
   .mood-face {
-    font-size: 1.35rem;
+    font-size: 1.1rem;
   }
 
   .biorhythm,
@@ -586,26 +734,8 @@ textarea:focus {
     padding: 10px;
   }
 
-  .save-state,
-  .stats-strip {
-    align-self: flex-start;
-  }
-
-  .mood-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .mood-option {
-    min-height: 76px;
-  }
-
-  .list-tools select {
-    flex-basis: auto;
-  }
-
   .primary-button,
   .ghost-button {
-    flex: 1 1 150px;
+    flex: 1 1 130px;
   }
 }
-    
