@@ -1,6 +1,6 @@
 # 学習ログ
 
-このリポジトリは、学習ログアプリに育てるための土台として使います。
+このリポジトリは、学習記録を残すためのブラウザアプリです。
 
 HTML/CSS/JavaScriptとlocalStorageだけで動く、学習記録アプリです。
 
@@ -8,19 +8,20 @@ HTML/CSS/JavaScriptとlocalStorageだけで動く、学習記録アプリです�
 
 ## 📱 デモ
 
-🔗 [https://gigaschool.github.io/tiny-diary/](https://gigaschool.github.io/tiny-diary/)
+このアプリはGitHub Pagesで公開しています。
 
-![📷 image.png](image.png)
+🔗 [学習ログアプリを開く](https://ytadano521.github.io/my-study-log/)
 
 ## デモの動かし方
 
 `index.html` をブラウザで開くだけで使えます。ビルドやサーバー起動は不要です。
 
 ```text
-tiny-diary/
+my-study-log/
 ├── index.html
 ├── styles.css
 ├── app.js
+├── assets/
 ├── README.md
 └── LICENSE
 ```
@@ -99,4 +100,4 @@ tiny-diary/
 
 ## ライセンス
 
-MIT License
+このプロジェクトはMITライセンスです。利用条件の詳細はリポジトリ直下の [`LICENSE`](LICENSE) をご覧ください。
