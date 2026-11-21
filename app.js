@@ -2,27 +2,27 @@ const STORAGE_KEY = "tiny-diary.entries.v1";
 
 const moods = {
   happy: {
-    label: "うれしい",
+    label: "集中できた",
     face: "😊",
     score: 5,
   },
   calm: {
-    label: "おだやか",
+    label: "まずまず",
     face: "😌",
     score: 4,
   },
   normal: {
-    label: "ふつう",
+    label: "普通",
     face: "🙂",
     score: 3,
   },
   tired: {
-    label: "つかれた",
+    label: "やや低下",
     face: "😵‍💫",
     score: 2,
   },
   sad: {
-    label: "しょんぼり",
+    label: "集中できず",
     face: "🥲",
     score: 1,
   },
@@ -172,12 +172,12 @@ function renderEntries() {
   if (entries.length > 0 && filteredEntries.length === 0) {
     emptyState.innerHTML = `
       <strong>条件に合う記録がありません</strong>
-      <span>検索ワードや気分フィルターを変えてみてください。</span>
+      <span>検索ワードや集中度フィルターを変えてみてください。</span>
     `;
   } else {
     emptyState.innerHTML = `
-      <strong>まだ記録がありません</strong>
-      <span>今日の気分と一言メモを保存すると、ここに表示されます。</span>
+      <strong>まだ学習記録がありません</strong>
+      <span>今日の集中度と学習メモを保存すると、ここに表示されます。</span>
     `;
   }
 
@@ -199,8 +199,8 @@ function renderSummary() {
 function renderBiorhythm() {
   if (entries.length === 0) {
     rhythmChart.innerHTML = "";
-    biorhythmMessage.textContent = "記録を保存すると表示されます";
-    biorhythmDetail.textContent = "最近7件の気分を波形グラフで表示します。";
+    biorhythmMessage.textContent = "学習記録を保存すると表示されます";
+    biorhythmDetail.textContent = "最近7件の集中度をグラフで表示します。";
     return;
   }
 
@@ -267,7 +267,7 @@ function createBiorhythmSvg(recentEntries) {
       class="rhythm-svg"
       viewBox="0 0 ${width} ${height}"
       role="img"
-      aria-label="最近${recentEntries.length}件の気分バイオリズム"
+      aria-label="最近${recentEntries.length}件の集中度の推移"
     >
       <defs>
         <linearGradient id="rhythm-line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
